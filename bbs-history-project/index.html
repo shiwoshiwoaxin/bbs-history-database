@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Telnet BBS History Database</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Leaflet Map Library -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- PapaParse CSV Parser -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>📡 Telnet BBS History Database</h1>
+        <p class="subtitle">Based on Telnet BBS Guide data (1997–2026), total <span id="totalCount">...</span> BBS systems</p>
+
+        <!-- Filter Panel -->
+        <div class="filters">
+            <div class="filter-row">
+                <label>🔧 BBS Software:</label>
+                <select id="softwareFilter"></select>
+
+                <label>🌍 Country:</label>
+                <select id="countryFilter"></select>
+
+                <label>🔓 New User Login:</label>
+                <select id="newLoginFilter">
+                    <option value="all">All</option>
+                    <option value="NEW">NEW (Direct)</option>
+                    <option value="Desired Handle">Desired Handle</option>
+                    <option value="Real Name">Real Name Required</option>
+                </select>
+            </div>
+            <div class="filter-row">
+                <button id="resetBtn">🔄 Reset Filters</button>
+                <span id="filterResult" class="filter-result"></span>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div class="dashboard">
+            <div class="stats">
+                <h3>📊 Statistics</h3>
+                <div id="statsInfo">Loading...</div>
+            </div>
+            <div id="map" class="map"></div>
+        </div>
+
+        <!-- BBS List Table -->
+        <div class="bbs-list">
+            <h3>📋 BBS List <span id="listCount"></span></h3>
+            <div class="table-wrapper">
+                <table id="resultTable">
+                    <thead>
+                        <tr>
+                            <th>BBS Name</th>
+                            <th>Software</th>
+                            <th>Country</th>
+                            <th>New User Login</th>
+                            <th>Telnet Address</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
